@@ -76,7 +76,6 @@ var circles = svg.selectAll("circle")
 	return randomnum(width/30)+(width/10)+30; }})
     .style("fill", function(d){
 	if (d.main =='main'){
-		console.log('yea')
 		return 'white'
 	}else{
 	return 	randomColor() }})
@@ -114,14 +113,12 @@ var aboutMeButton=svg.append("g")
 	for (a=0;a<nodes.length;a++){
 		num = randomnum(1)
 		
-		console.log(num)
 		if (num>5.5){
 		nodes[a].x = x+randomnum(5);
 		nodes[a].y = y+randomnum(5);
 		nodes[a].px = x+randomnum(5);
 		nodes[a].py = y+randomnum(5);
 		}else{
-		console.log('true')
 		nodes[a].x = x-randomnum(5);
 		nodes[a].y = y-randomnum(5);
 		nodes[a].px = x-randomnum(5);
@@ -175,14 +172,12 @@ var resumeButton=svg.append("g")
 	for (a=0;a<nodes.length;a++){
 		num = randomnum(1)
 		
-		console.log(num)
 		if (num>5.5){
 		nodes[a].x = x+randomnum(5);
 		nodes[a].y = y+randomnum(5);
 		nodes[a].px = x+randomnum(5);
 		nodes[a].py = y+randomnum(5);
 		}else{
-		console.log('true')
 		nodes[a].x = x-randomnum(5);
 		nodes[a].y = y-randomnum(5);
 		nodes[a].px = x-randomnum(5);
@@ -236,14 +231,12 @@ var projectsButton=svg.append("g")
 	for (a=0;a<nodes.length;a++){
 		num = randomnum(1)
 		
-		console.log(num)
 		if (num>5.5){
 		nodes[a].x = x+randomnum(5);
 		nodes[a].y = y+randomnum(5);
 		nodes[a].px = x+randomnum(5);
 		nodes[a].py = y+randomnum(5);
 		}else{
-		console.log('true')
 		nodes[a].x = x-randomnum(5);
 		nodes[a].y = y-randomnum(5);
 		nodes[a].px = x-randomnum(5);
@@ -296,14 +289,12 @@ var contactButton=svg.append("a")
 	for (a=0;a<nodes.length;a++){
 		num = randomnum(1)
 		
-		console.log(num)
 		if (num>5.5){
 		nodes[a].x = x+randomnum(5);
 		nodes[a].y = y+randomnum(5);
 		nodes[a].px = x+randomnum(5);
 		nodes[a].py = y+randomnum(5);
 		}else{
-		console.log('true')
 		nodes[a].x = x-randomnum(5);
 		nodes[a].y = y-randomnum(5);
 		nodes[a].px = x-randomnum(5);
