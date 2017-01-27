@@ -146,22 +146,18 @@ var aboutMeButton=svg.append("g")
 	delay('http://www.google.com')
 	})
 	.on('mouseover', function(d){
-	transitionin(aboutMeButtonRect,80,36,width/5-45,height/3-2)
+	transitionin(aboutMeButtonRect,135,45,width/5-67.5,height/3-5)
 	})
 	.on('mouseout', function(d){
-	transitionout(aboutMeButtonRect,70,30,width/5-40,height/3)
+	transitionout(aboutMeButtonRect,125,35,width/5-62.5,height/3)
 	})
 var aboutMeButtonRect = aboutMeButton.append('rect')
 	.style("fill","white")
-	.attr("x",width/5-40)
-	.attr("y",height/3)
     .attr("width",0)
 	.attr("height",0);
 var aboutMeButtonText = aboutMeButton.append('text')
-	.attr("x",width/5-35)
-	.attr("y",height/3+20)
 	.style("fill","#666666")
-	.style("font-size","15px")
+	.style("font-size","28px")
 	.style("text-anchor","start");	
 	
 	
@@ -212,22 +208,18 @@ var resumeButton=svg.append("g")
 	delay('http://www.google.com')
 	})
 	.on('mouseover', function(d){
-	transitionin(resumeButtonRect,70,36,width/5+width/5-35,height/3-2)
+	transitionin(resumeButtonRect, 125, 45, width/5+width/5-62.5, height/3-5)
 	})
 	.on('mouseout', function(d){
-	transitionout(resumeButtonRect,60,30,width/5+width/5-30,height/3)
+	transitionout(resumeButtonRect, 110, 35, width/5+width/5-55, height/3)
 	})
 var resumeButtonRect = resumeButton.append('rect')
 	.style("fill","white")
-	.attr("x",width/5+width/5-30)
-	.attr("y",height/3)
     .attr("width",0)
 	.attr("height",0);
 var resumeButtonText = resumeButton.append('text')
-	.attr("x",width/5+width/5-25)
-	.attr("y",height/3+20)
 	.style("fill","#666666")
-	.style("font-size","15px")
+	.style("font-size","28px")
 	.style("text-anchor","start");		
 	
 	
@@ -277,22 +269,18 @@ var projectsButton=svg.append("g")
 	delay('http://www.google.com')
 	})
 		.on('mouseover', function(d){
-		transitionin(projectsButtonRect,70,36, width*4/5-35, height/3-2)
+		transitionin(projectsButtonRect, 125, 45, width*4/5-62.5, height/3-5)
 	})
 	.on('mouseout', function(d){
-	transitionout(projectsButtonRect,60,30, width*4/5-30, height/3)
+	transitionout(projectsButtonRect, 110, 35, width*4/5-55, height/3)
 	})
 var projectsButtonRect = projectsButton.append('rect')
 	.style("fill","white")
-	.attr("x",width*4/5-30)
-	.attr("y",height/3)
     .attr("width",0)
 	.attr("height",0);
 var projectsButtonText = projectsButton.append('text')
-	.attr("x",width*4/5-25)
-	.attr("y",height/3+20)
 	.style("fill","#666666")
-	.style("font-size","15px")
+	.style("font-size","28px")
 	.style("text-anchor","start");	
 	
 
@@ -341,22 +329,18 @@ var contactButton=svg.append("a")
 	delay('http://www.google.com')
 	})
 	.on('mouseover', function(d){
-	transitionin(contactButtonRect,70,36,width*4/5-width/5-35,height/3-2)
+	transitionin(contactButtonRect,125,45,width*4/5-width/5-62.5,height/3-5)
 	})
 	.on('mouseout', function(d){
-	transitionout(contactButtonRect,60,30,width*4/5-width/5-30,height/3)
+	transitionout(contactButtonRect,110,35,width*4/5-width/5-55,height/3)
 	})
 var contactButtonRect = contactButton.append('rect')
 	.style("fill","white")
-	.attr("x",width*4/5-width/5-30)
-	.attr("y",height/3)
     .attr("width",0)
 	.attr("height",0);
 var contactButtonText = contactButton.append('text')
-	.attr("x",width*4/5-width/5-25)
-	.attr("y",height/3+20)
 	.style("fill","#666666")
-	.style("font-size","15px")
+	.style("font-size","28px")
 	.style("text-anchor","start");	
 
 
@@ -371,22 +355,22 @@ function resize() {
     text.attr('x',width/2)
 	.attr('y',height/6)
 	.style("font-size", width/3+"%");
-	aboutMeButtonRect.attr("x",width/5-40)
+	aboutMeButtonRect.attr("x",width/5-62.5)
 	.attr("y",height/3);
-	resumeButtonRect.attr("x",width/5+width/5-30)
+	resumeButtonRect.attr("x",width/5+width/5-55)
 	.attr("y",height/3);
-	contactButtonRect.attr("x",width*4/5-width/5-30)
+	contactButtonRect.attr("x",width*4/5-width/5-55)
 	.attr("y",height/3);
-	projectsButtonRect.attr("x",width*4/5-30)
+	projectsButtonRect.attr("x",width*4/5-55)
 	.attr("y",height/3);
-	aboutMeButtonText.attr("x",width/5-35)
-	.attr("y",height/3+20);
-	resumeButtonText.attr("x",width/5+width/5-25)
-	.attr("y",height/3+20);
-	contactButtonText.attr("x",width*4/5-width/5-25)
-	.attr("y",height/3+20);
-	projectsButtonText.attr("x",width*4/5-25)
-	.attr("y",height/3+20);
+	aboutMeButtonText.attr("x",width/5-57.5)
+	.attr("y",height/3+27);
+	resumeButtonText.attr("x",width/5+width/5-49)
+	.attr("y",height/3+27);
+	contactButtonText.attr("x",width*4/5-width/5-47)
+	.attr("y",height/3+27);
+	projectsButtonText.attr("x",width*4/5-49)
+	.attr("y",height/3+27);
   }
 	
 	
@@ -395,8 +379,8 @@ function resize() {
 setTimeout(function(){
 projectsButtonRect.transition()
 	.style("fill",'#666666')
-	.attr("width",60)
-	.attr("height",30)
+	.attr("width",110)
+	.attr("height",35)
 	.duration(2500)
 	.delay(100) 
 }, 2000);  
@@ -413,8 +397,8 @@ projectsButtonText.transition()
 setTimeout(function(){
 resumeButtonRect.transition()
 	.style("fill",'#666666')
-	.attr("width",60)
-	.attr("height",30)
+	.attr("width",110)
+	.attr("height",35)
 	.duration(2500)
 	.delay(100) 
 }, 2000);  
@@ -432,8 +416,8 @@ resumeButtonText.transition()
 setTimeout(function(){
 aboutMeButtonRect.transition()
 	.style("fill",'#666666')
-	.attr("width",70)
-	.attr("height",30)
+	.attr("width",125)
+	.attr("height",35)
 	.duration(2500)
 	.delay(100) 
 }, 2000);  
@@ -451,8 +435,8 @@ aboutMeButtonText.transition()
 setTimeout(function(){
 contactButtonRect.transition()
 	.style("fill",'#666666')
-	.attr("width",60)
-	.attr("height",30)
+	.attr("width",110)
+	.attr("height",35)
 	.duration(2500)
 	.delay(100) 
 }, 2000);  
