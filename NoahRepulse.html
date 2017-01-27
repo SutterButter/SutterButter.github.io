@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Noah J Sutter</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <style>
+		text{
+		fill:#666666;
+		text-anchor:middle;
+		font-family: 'Cabin Sketch', cursive;}
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+    </style>
+
+
+ <script src='http://d3js.org/d3.v3.min.js'></script>
+ </head>
+<body>
+<script>
+//Initializing nodes
+var nodes = [];
+width = window.innerWidth, height = window.innerHeight;
+for (a=0;a<50;a++){
+		nodes.push({})
+		nodes[a].x = randomnum(width-100)+50
+		nodes[a].y = randomnum(height-100)+50
+}
+
+
+//Setting up the node that follows the mouse
+var root = nodes[0];
+root.radius = 'true'; //fix this
+root.x = width/2;
+root.y = height*.25;
+root.fixed = true;
+root.main = 'main' //fix this
+
+//Creating a responsive SVG element
+var div = d3.select("body")
+	.append("div")
+	.classed("svg-container", true)
+svg = d3.select('div').append('svg')
+	.classed("svg-content-responsive", true)
+	.style("background-color","white");
+	
+//Creating the force layout
+var force = d3.layout.force()
+    .gravity(0)
+    .charge(function(d, i) { return i ? 0 : (-.03* Math.pow(width, 1.5)); })
+    .nodes(nodes);
+
+
+
+
+//Adding the circles to the nodes
+var newnodes = nodes.slice(1, -1);
+var circles = svg.selectAll("circle")
+    .data(newnodes)
+  .enter().append("circle")
+    .attr("r", function(d) { if (d.radius =='true'){
+	return 1;
+	}else{
+	return randomnum(width/30)+(width/10)+30; }})
+    .style("fill", function(d){
+	if (d.main =='main'){
+		console.log('yea')
+		return 'white'
+	}else{
+	return 	randomColor() }})
+	.style("opacity", 1);
+
+
+//Creating the Noah J Sutter text
+var text = d3.select("svg").append("text")
+	.attr('x',width/2)
+	.attr('y',height/6)
+	.style("font-size", width/3+"%")
+	.style('fill','white')
+	.style("opacity",'0');	
+
+
+
+
+
+	
+
+
+
+
+
+//Creating the about me button
+var click = true
+var aboutMeButton=svg.append("g")
+.on('click',function(d){
+	var p1
+	tester = false;
+	p1 = d3.mouse(this);
+		x = p1[0];
+		y = p1[1];
+	setTimeout(function(){
+	for (a=0;a<nodes.length;a++){
+		num = randomnum(1)
+		
+		console.log(num)
+		if (num>5.5){
+		nodes[a].x = x+randomnum(5);
+		nodes[a].y = y+randomnum(5);
+		nodes[a].px = x+randomnum(5);
+		nodes[a].py = y+randomnum(5);
+		}else{
+		console.log('true')
+		nodes[a].x = x-randomnum(5);
+		nodes[a].y = y-randomnum(5);
+		nodes[a].px = x-randomnum(5);
+		nodes[a].py = y-randomnum(5);		
+		}
+
+	}
+	},500)
+			circles.transition()
+			.style("fill",'white')
+			.duration(2500)
+		force = force.charge(function(d, i) { return i ? 0 : 500; })
+	click = false
+	force.start()
+	rects = svg.selectAll('rect')
+	rects.transition()
+		.attr("width",0)
+		.attr("height",0)
+	texts = svg.selectAll('text')
+	texts.transition()
+		.style("font-size","0px")
+	delay('http://www.google.com')
+	})
+	.on('mouseover', function(d){
+	transitionin(aboutMeButtonRect,80,36,width/5-45,height/3-2)
+	})
+	.on('mouseout', function(d){
+	transitionout(aboutMeButtonRect,70,30,width/5-40,height/3)
+	})
+var aboutMeButtonRect = aboutMeButton.append('rect')
+	.style("fill","white")
+	.attr("x",width/5-40)
+	.attr("y",height/3)
+    .attr("width",0)
+	.attr("height",0);
+var aboutMeButtonText = aboutMeButton.append('text')
+	.attr("x",width/5-35)
+	.attr("y",height/3+20)
+	.style("fill","#666666")
+	.style("font-size","15px")
+	.style("text-anchor","start");	
+	
+	
+	
+	
+//Creating the resume button
+var resumeButton=svg.append("g")
+	.on('click',function(d){
+	var p1
+	tester = false;
+	p1 = d3.mouse(this);
+		x = p1[0];
+		y = p1[1];
+	setTimeout(function(){
+	for (a=0;a<nodes.length;a++){
+		num = randomnum(1)
+		
+		console.log(num)
+		if (num>5.5){
+		nodes[a].x = x+randomnum(5);
+		nodes[a].y = y+randomnum(5);
+		nodes[a].px = x+randomnum(5);
+		nodes[a].py = y+randomnum(5);
+		}else{
+		console.log('true')
+		nodes[a].x = x-randomnum(5);
+		nodes[a].y = y-randomnum(5);
+		nodes[a].px = x-randomnum(5);
+		nodes[a].py = y-randomnum(5);		
+		}
+
+	}
+	},500)
+			circles.transition()
+			.style("fill",'white')
+			.duration(2500)
+		force = force.charge(function(d, i) { return i ? 0 : 500; })
+	click = false
+	force.start()
+	rects = svg.selectAll('rect')
+	rects.transition()
+		.attr("width",0)
+		.attr("height",0)
+	
+	texts = svg.selectAll('text')
+	texts.transition()
+		.style("font-size","0px")
+	delay('http://www.google.com')
+	})
+	.on('mouseover', function(d){
+	transitionin(resumeButtonRect,70,36,width/5+width/5-35,height/3-2)
+	})
+	.on('mouseout', function(d){
+	transitionout(resumeButtonRect,60,30,width/5+width/5-30,height/3)
+	})
+var resumeButtonRect = resumeButton.append('rect')
+	.style("fill","white")
+	.attr("x",width/5+width/5-30)
+	.attr("y",height/3)
+    .attr("width",0)
+	.attr("height",0);
+var resumeButtonText = resumeButton.append('text')
+	.attr("x",width/5+width/5-25)
+	.attr("y",height/3+20)
+	.style("fill","#666666")
+	.style("font-size","15px")
+	.style("text-anchor","start");		
+	
+	
+
+//Creating the projects button
+var projectsButton=svg.append("g")
+    	.on('click',function(d){
+	var p1
+	tester = false;
+	p1 = d3.mouse(this);
+		x = p1[0];
+		y = p1[1];
+	setTimeout(function(){
+	for (a=0;a<nodes.length;a++){
+		num = randomnum(1)
+		
+		console.log(num)
+		if (num>5.5){
+		nodes[a].x = x+randomnum(5);
+		nodes[a].y = y+randomnum(5);
+		nodes[a].px = x+randomnum(5);
+		nodes[a].py = y+randomnum(5);
+		}else{
+		console.log('true')
+		nodes[a].x = x-randomnum(5);
+		nodes[a].y = y-randomnum(5);
+		nodes[a].px = x-randomnum(5);
+		nodes[a].py = y-randomnum(5);		
+		}
+
+	}
+	},500)
+			circles.transition()
+			.style("fill",'white')
+			.duration(2500)
+		force = force.charge(function(d, i) { return i ? 0 : 500; })
+	click = false
+	force.start()
+	rects = svg.selectAll('rect')
+	rects.transition()
+		.attr("width",0)
+		.attr("height",0)
+	
+	texts = svg.selectAll('text')
+	texts.transition()
+		.style("font-size","0px")
+	delay('http://www.google.com')
+	})
+		.on('mouseover', function(d){
+		transitionin(projectsButtonRect,70,36, width*4/5-35, height/3-2)
+	})
+	.on('mouseout', function(d){
+	transitionout(projectsButtonRect,60,30, width*4/5-30, height/3)
+	})
+var projectsButtonRect = projectsButton.append('rect')
+	.style("fill","white")
+	.attr("x",width*4/5-30)
+	.attr("y",height/3)
+    .attr("width",0)
+	.attr("height",0);
+var projectsButtonText = projectsButton.append('text')
+	.attr("x",width*4/5-25)
+	.attr("y",height/3+20)
+	.style("fill","#666666")
+	.style("font-size","15px")
+	.style("text-anchor","start");	
+	
+
+//Creating the contact button
+var contactButton=svg.append("a")
+    .on('click',function(d){
+	var p1
+	tester = false;
+	p1 = d3.mouse(this);
+		x = p1[0];
+		y = p1[1];
+	setTimeout(function(){
+	for (a=0;a<nodes.length;a++){
+		num = randomnum(1)
+		
+		console.log(num)
+		if (num>5.5){
+		nodes[a].x = x+randomnum(5);
+		nodes[a].y = y+randomnum(5);
+		nodes[a].px = x+randomnum(5);
+		nodes[a].py = y+randomnum(5);
+		}else{
+		console.log('true')
+		nodes[a].x = x-randomnum(5);
+		nodes[a].y = y-randomnum(5);
+		nodes[a].px = x-randomnum(5);
+		nodes[a].py = y-randomnum(5);		
+		}
+
+	}
+	},500)
+			circles.transition()
+			.style("fill",'white')
+			.duration(2500)
+		force = force.charge(function(d, i) { return i ? 0 : 500; })
+	click = false
+	force.start()
+	rects = svg.selectAll('rect')
+	rects.transition()
+		.attr("width",0)
+		.attr("height",0)
+	
+	texts = svg.selectAll('text')
+	texts.transition()
+		.style("font-size","0px")
+	delay('http://www.google.com')
+	})
+	.on('mouseover', function(d){
+	transitionin(contactButtonRect,70,36,width*4/5-width/5-35,height/3-2)
+	})
+	.on('mouseout', function(d){
+	transitionout(contactButtonRect,60,30,width*4/5-width/5-30,height/3)
+	})
+var contactButtonRect = contactButton.append('rect')
+	.style("fill","white")
+	.attr("x",width*4/5-width/5-30)
+	.attr("y",height/3)
+    .attr("width",0)
+	.attr("height",0);
+var contactButtonText = contactButton.append('text')
+	.attr("x",width*4/5-width/5-25)
+	.attr("y",height/3+20)
+	.style("fill","#666666")
+	.style("font-size","15px")
+	.style("text-anchor","start");	
+
+
+
+resize();
+d3.select(window).on("resize", resize);
+
+function resize() {
+    width = window.innerWidth, height = window.innerHeight;
+    svg.attr("width", width).attr("height", height);
+    force.size([width, height]).resume();
+    text.attr('x',width/2)
+	.attr('y',height/6)
+	.style("font-size", width/3+"%");
+	aboutMeButtonRect.attr("x",width/5-40)
+	.attr("y",height/3);
+	resumeButtonRect.attr("x",width/5+width/5-30)
+	.attr("y",height/3);
+	contactButtonRect.attr("x",width*4/5-width/5-30)
+	.attr("y",height/3);
+	projectsButtonRect.attr("x",width*4/5-30)
+	.attr("y",height/3);
+	aboutMeButtonText.attr("x",width/5-35)
+	.attr("y",height/3+20);
+	resumeButtonText.attr("x",width/5+width/5-25)
+	.attr("y",height/3+20);
+	contactButtonText.attr("x",width*4/5-width/5-25)
+	.attr("y",height/3+20);
+	projectsButtonText.attr("x",width*4/5-25)
+	.attr("y",height/3+20);
+  }
+	
+	
+	
+//Making the buttons appear
+setTimeout(function(){
+projectsButtonRect.transition()
+	.style("fill",'#666666')
+	.attr("width",60)
+	.attr("height",30)
+	.duration(2500)
+	.delay(100) 
+}, 2000);  
+setTimeout(function(){
+projectsButtonText.transition()
+	.text('Projects')
+}, 5000);  
+setTimeout(function(){
+projectsButtonText.transition()	
+	.style('fill','white')
+	.duration(1000)
+}, 5000); 
+
+setTimeout(function(){
+resumeButtonRect.transition()
+	.style("fill",'#666666')
+	.attr("width",60)
+	.attr("height",30)
+	.duration(2500)
+	.delay(100) 
+}, 2000);  
+setTimeout(function(){
+resumeButtonText.transition()
+	.text('Resume')
+
+}, 5000); 
+setTimeout(function(){
+resumeButtonText.transition()	
+	.style('fill','white')
+	.duration(1000)
+}, 5000); 
+
+setTimeout(function(){
+aboutMeButtonRect.transition()
+	.style("fill",'#666666')
+	.attr("width",70)
+	.attr("height",30)
+	.duration(2500)
+	.delay(100) 
+}, 2000);  
+setTimeout(function(){
+aboutMeButtonText.transition()
+	.text('About Me')
+
+}, 5000); 
+setTimeout(function(){
+aboutMeButtonText.transition()	
+	.style('fill','white')
+	.duration(1000)
+}, 5000); 
+
+setTimeout(function(){
+contactButtonRect.transition()
+	.style("fill",'#666666')
+	.attr("width",60)
+	.attr("height",30)
+	.duration(2500)
+	.delay(100) 
+}, 2000);  
+setTimeout(function(){
+contactButtonText.transition()
+	.text('Contact')
+
+}, 5000); 
+setTimeout(function(){
+contactButtonText.transition()	
+	.style('fill','white')
+	.duration(1000)
+}, 5000); 
+
+
+//The functions for mouse in and out on buttons
+function transitionin(Rect,width,height,x,y){
+Rect.transition()
+	.attr("width",width)
+	.attr("height",height)
+	.attr("x",x)
+	.attr("y",y)
+	.style("fill","#666666")
+}
+
+function transitionout(Rect,width,height,x,y){
+
+Rect.transition()
+	.attr("width",function(d){
+		if (click){
+	return width
+	}else{
+		return 0
+	}})
+	.attr("height",function(d){
+		if (click){
+			return height;
+		}else{
+			return 0;
+	}})
+	.attr("x",x)
+	.attr("y",y)
+	.style("fill","#666666")
+}
+
+
+//Delay the going to a url when button is clicked
+function delay (URL) {
+    setTimeout( function() { window.location = URL }, 2500 );
+}
+
+//Making Noah J Sutter apper
+setTimeout(function(){
+text.transition()
+	.text('Noah J Sutter')
+	.style("fill",'#666666')
+	.style("opacity",'1')
+	.duration(2500)
+	.delay(100) 
+}, 500);  
+var i=0;
+
+//Running the force simulation
+force.on("tick", function(e) {
+if (i == 1){
+circles
+  .attr("cx", function(d) { return d.x; })
+  .attr("cy", function(d) { return d.y; });
+  i=0;
+}
+ force.resume();
+ i++
+});
+
+//Updating the position of the node following the mouse
+var tester = true;
+svg.on("mousemove", function() {
+	if (tester){
+		var p1 = d3.mouse(this);
+		root.px = p1[0];
+		root.py = p1[1];
+		force.resume();
+	}
+});
+
+//Creates a black and white random color
+	function randomColor() {
+		//num =Math.random()
+		//if (num<.5){
+        return "hsl(50," + ~~(Math.random()*100) + "%," + ~~(Math.random()*100) + "%)";
+		//}else{
+		//return "hsl(" + ~~(0) + ",90%,45%)";
+		//}
+      }
+	  function randomnum(num) {
+        return (Math.random()*num)+5;
+      }
+
+//Starting the force diagram	  
+force.start();
+</script>
+
+</body>
+</html>
